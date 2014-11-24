@@ -1,7 +1,6 @@
 package br.unb.items;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Shop {
 	ArrayList<Item> items = new ArrayList<Item>();
@@ -49,6 +48,24 @@ public class Shop {
 		rabadonsDeathcap.subItens.add(needlesslyLargeRod);
 		rabadonsDeathcap.subItens.add(blastingWand);
 		
+		Item bfSword = new Item();
+		bfSword.name = "B. F. Sword";
+		bfSword.cust = 1550;
+		bfSword.properties.put("attackDamage", 50.0);
+
+		Item pickaxe = new Item();
+		pickaxe.name = "Pickaxe";
+		pickaxe.cust = 875;
+		pickaxe.properties.put("attackDamage", 25.0);
+
+		Item infinityEdge = new Item();
+		infinityEdge.name = "Infinity Edge";
+		infinityEdge.cust = 2400;
+		infinityEdge.properties.put("attackDamage", 80.0);		
+		infinityEdge.subItens.add(bfSword);
+		infinityEdge.subItens.add(pickaxe);
+
+
 		items.add(giantsBelt);
 		items.add(rubyCrystal);
 		items.add(rejuvenationBead);
@@ -56,6 +73,9 @@ public class Shop {
 		items.add(needlesslyLargeRod);
 		items.add(blastingWand);
 		items.add(rabadonsDeathcap);
+		items.add(infinityEdge);
+		items.add(bfSword);
+		items.add(pickaxe);
 	}
 	
 	public ArrayList<Item> listItem(Double value, String type){

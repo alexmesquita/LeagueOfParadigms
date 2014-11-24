@@ -17,6 +17,8 @@ import java.util.Random;
 import br.unb.champions.Ahri;
 import br.unb.champions.Champion;
 import br.unb.champions.ChampionDamage;
+import br.unb.champions.Draven;
+import br.unb.champions.Jax;
 import br.unb.champions.Voli;
 import br.unb.items.Item;
 import br.unb.items.Shop;
@@ -52,7 +54,7 @@ public class Computer extends Agent{
 	
 	private void raffleChampion(){
 		Random randomGenerator = new Random();
-		int r = randomGenerator.nextInt(2);
+		int r = randomGenerator.nextInt(4);
 		
 		switch (r) {
 		case 0:
@@ -62,6 +64,14 @@ public class Computer extends Agent{
 		case 1:
 			champ = new Ahri();
 			System.out.println("Voce vai lutar contra uma Ahri, boa sorte!");
+		case 2:
+			champ = new Draven();
+			System.out.println("Voce vai lutar contra um Draven, boa sorte!");
+			break;
+		case 3:
+			champ = new Jax();
+			System.out.println("Voce vai lutar contra um Jax, boa sorte!");
+			break;
 		default:
 			break;
 		}		
@@ -84,7 +94,6 @@ public class Computer extends Agent{
 				} catch (UnreadableException e1) {
 					e1.printStackTrace();
 				}
-				System.out.println("Computador: " + champ.getHealth());
 				if(champ.getHealth() <= 0){
 					System.out.println("Voce ganhou!");
 					return;
@@ -101,8 +110,6 @@ public class Computer extends Agent{
 				
 				Random random = new Random();
 				gold += random.nextInt(1001);
-				System.out.println("Computer - Ouro total: "+gold);
-				
 				
 				BuyItems();
 				
@@ -143,8 +150,6 @@ public class Computer extends Agent{
 				}
 			}
 			if(buy != null){
-				System.out.println("O computer comprou o item:");
-				System.out.println(buy.getName() + " - " + buy.getCust());
 				build.add(buy);
 				champ.updateAbilitiesItems(buy);
 				champ.updateSkills();

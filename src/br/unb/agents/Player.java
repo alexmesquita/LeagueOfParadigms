@@ -20,6 +20,8 @@ import java.util.Scanner;
 import br.unb.champions.Ahri;
 import br.unb.champions.Champion;
 import br.unb.champions.ChampionDamage;
+import br.unb.champions.Draven;
+import br.unb.champions.Jax;
 import br.unb.champions.Voli;
 import br.unb.items.Item;
 import br.unb.items.Shop;
@@ -87,6 +89,8 @@ public class Player extends Agent{
 			System.out.println("Escolha o seu Campeão:");
 			System.out.println("1) Volibear");
 			System.out.println("2) Ahri");
+			System.out.println("3) Draven");
+			System.out.println("4) Jax");
 			
 			Scanner scanner = new Scanner(System.in);
 			int option = scanner.nextInt();
@@ -99,6 +103,14 @@ public class Player extends Agent{
 				champ = new Ahri();
 				System.out.println("Voce escolhei a Ahri, boa sorte!");
 				break;
+			case 3:
+				champ = new Draven();
+				System.out.println("Voce escolhei o Draven, boa sorte!");
+				break;
+			case 4:
+				champ = new Jax();
+				System.out.println("Voce escolhei o Jax, boa sorte!");
+				break;
 			default:
 				System.out.println("Animal, escolha uma campeão");
 				break;
@@ -108,7 +120,6 @@ public class Player extends Agent{
 			try {
 				championDamage.champ = champ;
 				championDamage.damage = attackAdversary();
-				System.out.println("Player causou : " + championDamage.damage + " de dano");
 				message.setContentObject(championDamage);
 			} catch (IOException e) {
 				System.out.println("erro ao enviar o objeto");
@@ -136,7 +147,7 @@ public class Player extends Agent{
 				champ.setHealth(champ.getHealth() - championDamage.damage);
 				System.out.println("Vida do Player: " + champ.getHealth());
 				if(champ.getHealth() <= 0){
-					System.out.println("Voce perdeu");
+					System.out.println("Voce perdeu! :(");
 					return;
 				}
 				else{
@@ -151,7 +162,6 @@ public class Player extends Agent{
 				
 				Random random = new Random();
 				gold += random.nextInt(1001);
-				System.out.println("Player - Ouro total: "+gold);
 				BuyItems();
 				
 				ACLMessage replay = message.createReply();
@@ -186,7 +196,8 @@ public class Player extends Agent{
 			option = 0;
 			items = shop.listItem(gold, champ.getType());
 			for (Item item : items) {
-				System.out.println(option + ") Item: " + item.getName());
+				System.out.println(option + ") Item: " + item.getName() + " - Custo: " +
+						item.getCust());
 				Map<String, Double> it1 = item.getProperties();
 				for(String key : it1.keySet()){
 					System.out.println("Propriedade: " + key + " - Adicional: "+

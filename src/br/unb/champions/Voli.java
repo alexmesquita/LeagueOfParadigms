@@ -30,8 +30,8 @@ public class Voli extends Champion implements Serializable{
 	public void updateSkills(){
 		skills.get(0).setDamage((80+45*level)+0.15*health);
 		skills.get(1).setDamage(30.0*level);
-		skills.get(1).setDamage((60+45*level)+0.6*abilityPower);
-		skills.get(1).setDamage(attackDamage*((int)2*(Math.pow(attackSpeed, level)))+3.3*level);	
+		skills.get(2).setDamage((60+45*level)+0.6*abilityPower);
+		skills.get(3).setDamage(attackDamage*((int)2*(Math.pow(attackSpeed, level)))+3.3*level);	
 	}
 	
 	public void updateAbilities(){
